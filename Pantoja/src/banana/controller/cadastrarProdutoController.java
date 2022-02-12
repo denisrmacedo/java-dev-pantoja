@@ -28,7 +28,20 @@ public class cadastrarProdutoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("RECEBI A REQUISIÇÃO GET!");
+		
+//		String descricao = request.getParameter("descricao");
+//		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+//		double preco = Double.parseDouble(request.getParameter("preco"));
+//		
+//		boolean online = false; 
+//		if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
+//			online = true;
+//		};
+//		
+//		
+//		System.out.println("RECEBI A REQUISIÇÃO GET " + descricao + quantidade + preco + online);
+		
+		this.doPost(request, response);
 	}
 
 	/**
@@ -37,18 +50,38 @@ public class cadastrarProdutoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		
 		String descricao = request.getParameter("descricao");
-		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-		double preco = Double.parseDouble(request.getParameter("preco"));
+		int quantidade;
+		double preco;
 		
-		boolean online = false; 
-		if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
-			online = true;
-		};
+		if(descricao != null && !descricao.isEmpty() && request.getParameter("quantidade") != null 
+			&& !request.getParameter("quantidade").isEmpty() 
+			&& request.getParameter("preco") != null && !request.getParameter("preco").isEmpty()) {
+				
+				quantidade = Integer.parseInt(request.getParameter("quantidade"));
+				preco = Double.parseDouble(request.getParameter("preco"));
+				System.out.println("[BANANA]" + descricao);
+				System.out.println("[BANANA]" + quantidade);
+				System.out.println("[BANANA]" + preco);
+				
+				boolean online = false; 
+				if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
+					online = true;
+				};
+				System.out.println("[BANANA]" + online);
+				
+					
+			}
+		
+
 		
 		
-		System.out.println("RECEBI A REQUISIÇÃO POST " + descricao + quantidade + preco + online);
+		
+		System.out.println("RECEBI A REQUISIÇÃO POST ");
+		
+		
+			
+		}
 		
 	}
-
-}
