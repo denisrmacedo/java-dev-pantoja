@@ -29,17 +29,7 @@ public class cadastrarProdutoController extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-//		String descricao = request.getParameter("descricao");
-//		int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-//		double preco = Double.parseDouble(request.getParameter("preco"));
-//		
-//		boolean online = false; 
-//		if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
-//			online = true;
-//		};
-//		
-//		
-//		System.out.println("RECEBI A REQUISIÇÃO GET " + descricao + quantidade + preco + online);
+		System.out.println("RECEBI A REQUISIÇÃO GET ");
 		
 		this.doPost(request, response);
 	}
@@ -69,17 +59,13 @@ public class cadastrarProdutoController extends HttpServlet {
 				if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
 					online = true;
 				};
-				System.out.println("[BANANA]" + online);
+				System.out.println("[BANANA]" + online );
 				
 					
 			}
 		
 
-		
-		
-		
 		System.out.println("RECEBI A REQUISIÇÃO POST ");
-		
 		
 			
 		}
