@@ -1,11 +1,15 @@
 package banana.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import banana.model.Produto;
 
 /**
  * Servlet implementation class cadastrarProdutoController
@@ -42,30 +46,48 @@ public class cadastrarProdutoController extends HttpServlet {
 		
 		
 		String descricao = request.getParameter("descricao");
-		int quantidade;
-		double preco;
+		String mensagem;
+		Produto produto = new Produto();
 		
 		if(descricao != null && !descricao.isEmpty() && request.getParameter("quantidade") != null 
 			&& !request.getParameter("quantidade").isEmpty() 
 			&& request.getParameter("preco") != null && !request.getParameter("preco").isEmpty()) {
-				
+				int quantidade;
+				double preco;
 				quantidade = Integer.parseInt(request.getParameter("quantidade"));
 				preco = Double.parseDouble(request.getParameter("preco"));
-				System.out.println("[BANANA]" + descricao);
-				System.out.println("[BANANA]" + quantidade);
-				System.out.println("[BANANA]" + preco);
+				
+//				System.out.println("[BANANA]" + descricao);
+//				System.out.println("[BANANA]" + quantidade);
+//				System.out.println("[BANANA]" + preco);
 				
 				boolean online = false; 
 				if (request.getParameter("online") != null && request.getParameter("online").contentEquals("on")){
 					online = true;
 				};
-				System.out.println("[BANANA]" + online );
 				
+//				produto.setDescricao(descricao);
+//				produto.setQuantidade(quantidade);
+//				produto.setPreco(preco);
+//				produto.setOnLine(online);
+				produto.salvar();
+//				System.out.println("[BANANA]" + online );
+				
+				mensagem = "Produto Cadastrado com sucesso!";
+				
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("cadastrarProduto.jsp"); 
+				dispatcher.forward(request, response);
 					
+			} else {
+				mensagem = "Os campos precisam ser preenchidos!";				
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("cadastrarProduto.jsp"); 
+				dispatcher.forward(request, response);
 			}
 		
 
-		System.out.println("RECEBI A REQUISIÇÃO POST ");
+//		System.out.println("RECEBI A REQUISIÇÃO POST ");
 		
 			
 		}

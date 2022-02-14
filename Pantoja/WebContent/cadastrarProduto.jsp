@@ -39,6 +39,12 @@
 				<input id="bananaButton" type="submit" name="salvar"
 					value="Cadastrar Produto">
 			</div>
+			<%
+				String mensagem = (String) request.getAttribute("mensagem");
+				if (mensagem != null ){
+					out.println(mensagem);
+				}
+			%>
 		</form>
 	</main>
 </body>

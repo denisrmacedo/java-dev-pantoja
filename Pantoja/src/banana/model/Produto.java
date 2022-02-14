@@ -66,5 +66,8 @@ public class Produto {
 	public void setOnLine(boolean onLine) {
 		this.onLine = onLine;
 	}
-
+	
+	public void salvar() {
+		System.out.println("[BANANA]: Salvo!");
+	}
 }
